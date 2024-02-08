@@ -1,0 +1,40 @@
+name: Build and Start Project
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install global dependencies
+      run: npm install -g webpack webpack-cli
+
+    - name: Build and Start Server
+      run: |
+        cd server
+        npm install
+        webpack --mode production
+        node dist/main.js &
+
+    - name: Build and Start Client
+      run: |
+        cd client
+        npm install
+        webpack --mode production
+        node dist/main.js &
+
+    - name: Build and Start Truck Dashboard
+      run: |
+        cd truck-dashboard
+        npm install
+        webpack --mode production
+        node dist/main.js &
