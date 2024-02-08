@@ -67,7 +67,7 @@ const PickUpDetail = (props) => {
                         </Typography>
 
                         <Typography variant="subtitle1" component="div">
-                        <b>Address</b>: "Vaishali Ghaziabad, Vaishali, Ghaziabad, Delhi NCR"
+                        <b>Address</b>: "oxford street, Osu, Accra, Ghana"
                         </Typography>
 
                         <Typography variant="subtitle1" component="div">

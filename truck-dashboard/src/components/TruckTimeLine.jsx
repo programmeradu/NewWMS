@@ -28,7 +28,7 @@ export default function TruckTimeline() {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>
-                        Gurgaon - Faridabad Road, Gurgaon, Delhi NCR
+                        123 Jungle Road, East Legon, Accra, Ghana
                     </TimelineContent>
                 </TimelineItem>
                 
@@ -41,7 +41,7 @@ export default function TruckTimeline() {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>
-                        Sector 110A, Gurgaon, Chandan Vihar, Gurgaon, Delhi NCR
+                        456 Oxford Street, Osu, Accra, Ghana
                     </TimelineContent>
                 </TimelineItem>
                 
@@ -54,7 +54,7 @@ export default function TruckTimeline() {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>
-                        Vaishali, Ghaziabad, Delhi NCR
+                        789 Cantonments Road, Cantonments, Accra, Ghana
                     </TimelineContent>
                 </TimelineItem>
                 <TimelineItem>
@@ -66,7 +66,7 @@ export default function TruckTimeline() {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>
-                        Noida Extension, Noida, Delhi NCR
+                        321 Dzorwulu Crescent, Dzorwulu, Accra, Ghana
                     </TimelineContent>
                 </TimelineItem>
                 <TimelineItem>
@@ -78,7 +78,7 @@ export default function TruckTimeline() {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>
-                        Sector 2, Greater Noida, Sector 2, Greater Noida, Delhi NCR
+                        654 Labone Drive, Labone, Accra, Ghana
                     </TimelineContent>
                 </TimelineItem>
                 <TimelineItem>
@@ -90,7 +90,7 @@ export default function TruckTimeline() {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent sx={{width:"100px", overflow:"hide"}}>
-                        tower 2, 6th floor, Crossings Republik, Ghaziabad, Delhi NCR
+                        987 Airport Road, Airport Residential Area, Accra, Ghana
                     </TimelineContent>
                 </TimelineItem>
                 <TimelineItem>
@@ -102,7 +102,7 @@ export default function TruckTimeline() {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>
-                        Sector 79, Gurgaon, Delhi NCR
+                        234 Ridge Avenue, Ridge, Accra, Ghana
                     </TimelineContent>
                 </TimelineItem>
                 <TimelineItem>
@@ -113,7 +113,7 @@ export default function TruckTimeline() {
                         <TimelineDot />
                     </TimelineSeparator>
                     <TimelineContent>
-                        Shakti Khand 2, Ghaziabad, Delhi NCR
+                        567 Roman Ridge Street, Roman Ridge, Accra, Ghana
                     </TimelineContent>
                 </TimelineItem>
             </Timeline>
