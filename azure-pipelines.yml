@@ -1,0 +1,29 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    cd server
+    npm install
+    npm start &
+  displayName: 'Start Server'
+
+- script: |
+    cd client
+    npm install
+    npm start &
+  displayName: 'Start Client'
+
+- script: |
+    cd truck-dashboard
+    npm install
+    npm start &
+  displayName: 'Start Truck Dashboard'
