@@ -11,19 +11,23 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd server
     npm install
-    npm start &
-  displayName: 'Start Server'
+  displayName: 'Install dependencies'
 
 - script: |
-    cd client
-    npm install
-    npm start &
-  displayName: 'Start Client'
+    npm run build
+  displayName: 'Build web app'
 
-- script: |
-    cd truck-dashboard
-    npm install
-    npm start &
-  displayName: 'Start Truck Dashboard'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.Repository.LocalPath)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    artifactName: 'drop'
+    publishLocation: 'Container'
