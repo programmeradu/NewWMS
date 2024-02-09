@@ -1,0 +1,24 @@
+{
+    "name": "my-app",
+    "version": "1.0.0",
+    "scripts": {
+      "install": "npm run install:client && npm run install:dashboard && npm run install:server && npm run install:wms",
+      "build": "npm run build:client && npm run build:dashboard && npm run build:wms",
+      "start": "concurrently \"npm run start:client\" \"npm run start:dashboard\" \"npm run start:server\" \"npm run start:wms\"",
+      "install:client": "cd client && npm install",
+      "build:client": "cd client && npm run build",
+      "start:client": "cd client && cross-env PORT=3001 npm start",
+      "install:dashboard": "cd truck-dashboard && npm install",
+      "build:dashboard": "cd truck-dashboard && npm run build",
+      "start:dashboard": "cd truck-dashboard && cross-env PORT=3002 npm start",
+      "install:server": "cd server && npm install",
+      "start:server": "cd server && npm start",
+      "install:wms": "cd wms && npm install",
+      "build:wms": "cd wms && npm run build",
+      "start:wms": "cd wms && cross-env PORT=3003 npm start"
+    },
+    "dependencies": {
+      "concurrently": "^6.5.1",
+      "cross-env": "^7.0.3"
+    }
+  }
