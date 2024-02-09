@@ -43,8 +43,7 @@ steps:
 - script: |
     cd server
     npm install
-    npm start
-  displayName: 'Start Server'
+  displayName: 'Install Server Dependencies'
 
 - task: PublishBuildArtifacts@1
   inputs:
