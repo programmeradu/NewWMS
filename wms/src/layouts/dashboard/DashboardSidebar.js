@@ -61,11 +61,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       <Box sx={{ flexGrow: 1 }} />
 
       <Box sx={{ px: 2.5, pb: 2, mt: 10 }}>
-          <Box
-            component="img"
-            src="/static/illustrations/sidebar_illustration.svg"
-            sx={{ position: 'relative' }}
-          />
+        <Box component="img" src="/static/illustrations/sidebar_illustration.svg" sx={{ position: 'relative' }} />
       </Box>
     </Scrollbar>
   );

@@ -14,7 +14,7 @@ export default function DashboardApp() {
   const theme = useTheme();
 
   return (
-    <Page title="Dashboard" sx = {{ paddingBottom: 0 }}>
+    <Page title="Dashboard" sx={{ paddingBottom: 0 }}>
       <Container maxWidth="xl">
         {/* <Typography variant="h4" sx={{ mb: 5 }}>
           Hi, Welcome back
@@ -22,19 +22,19 @@ export default function DashboardApp() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Users" total={100000} icon={'eva:people-fill'} />
+            <AppWidgetSummary title="Total Users" total={100000} icon="eva:people-fill" />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Requests Handled" total={1352831} color="info" icon={'mdi:calendar-check'} />
+            <AppWidgetSummary title="Requests Handled" total={1352831} color="info" icon="mdi:calendar-check" />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Trucks" total={25} color="warning" icon={'mdi:dump-truck'} />
+            <AppWidgetSummary title="Total Trucks" total={25} color="warning" icon="mdi:dump-truck" />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Pending Requests" total={38} color="error" icon={'mdi:alert-decagram'} />
+            <AppWidgetSummary title="Pending Requests" total={38} color="error" icon="mdi:alert-decagram" />
           </Grid>
 
           <Grid item xs={12} md={12} lg={12}>

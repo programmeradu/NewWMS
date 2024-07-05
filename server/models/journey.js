@@ -1,35 +1,35 @@
 import mongoose from "mongoose";
 
 const JourneySchema = new mongoose.Schema(
-    {
-        journeyId: {
-            type: String,
-            required: true
-        },
-        truckId: {
-            type: String,
-            required: true
-        },
-        journeyLength: {
-            type: String,
-            required: true
-        },
-        approxJourneyTime: {
-            type: String,
-            required: true
-        },
-        depotLocation: {
-            type: String,
-            required: true
-        },
-        // path: {
-            
-        // }
+  {
+    journeyId: {
+      type: String,
+      required: true,
     },
-    {
-        timestamps: true
-    }
-)
+    truckId: {
+      type: String,
+      required: true,
+    },
+    journeyLength: {
+      type: String,
+      required: true,
+    },
+    approxJourneyTime: {
+      type: String,
+      required: true,
+    },
+    depotLocation: {
+      type: String,
+      required: true,
+    },
+    // path: {
 
-const Journey = mongoose.model('journey', JourneySchema);
+    // }
+  },
+  {
+    timestamps: true,
+  },
+);
+
+const Journey = mongoose.model("journey", JourneySchema);
 export default Journey;

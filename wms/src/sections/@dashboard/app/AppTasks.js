@@ -5,7 +5,18 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { useForm, Controller } from 'react-hook-form';
 // @mui
-import { Box, Card, Stack, Divider, Checkbox, MenuItem, IconButton, Button, CardHeader, FormControlLabel } from '@mui/material';
+import {
+  Box,
+  Card,
+  Stack,
+  Divider,
+  Checkbox,
+  MenuItem,
+  IconButton,
+  Button,
+  CardHeader,
+  FormControlLabel,
+} from '@mui/material';
 // components
 import Iconify from '../../../Iconify';
 import MenuPopover from '../../../components/MenuPopover';
@@ -27,23 +38,25 @@ export default function AppTasks({ title, subheader, list, ...other }) {
 
   return (
     <Card {...other}>
-      <Box sx = {{
-        display: 'flex',
-        justifyContent: 'space-between',
-      }}>  
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
         <CardHeader title={title} subheader={subheader} />
-        <Button 
-          variant="outlined" 
-          component={RouterLink} 
-          to="#" 
+        <Button
+          variant="outlined"
+          component={RouterLink}
+          to="#"
           startIcon={<Iconify icon="eva:plus-fill" />}
-          sx = {{
-            margin: '24px 24px 0px'
+          sx={{
+            margin: '24px 24px 0px',
           }}
         >
           New Task
         </Button>
-      </Box> 
+      </Box>
       <Controller
         name="taskCompleted"
         control={control}
@@ -136,24 +149,24 @@ function TaskItem({ task, checked, onChange }) {
         actions={
           <>
             <MenuItem onClick={handleMarkComplete}>
-              <Iconify icon={'eva:checkmark-circle-2-fill'} />
+              <Iconify icon="eva:checkmark-circle-2-fill" />
               Mark Complete
             </MenuItem>
 
             <MenuItem onClick={handleEdit}>
-              <Iconify icon={'eva:edit-fill'} />
+              <Iconify icon="eva:edit-fill" />
               Edit
             </MenuItem>
 
             <MenuItem onClick={handleShare}>
-              <Iconify icon={'eva:share-fill'} />
+              <Iconify icon="eva:share-fill" />
               Share
             </MenuItem>
 
             <Divider sx={{ borderStyle: 'dashed' }} />
 
             <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
-              <Iconify icon={'eva:trash-2-outline'} />
+              <Iconify icon="eva:trash-2-outline" />
               Delete
             </MenuItem>
           </>
@@ -176,7 +189,7 @@ function MoreMenuButton({ actions, open, onOpen, onClose }) {
   return (
     <>
       <IconButton size="large" color="inherit" sx={{ opacity: 0.48 }} onClick={onOpen}>
-        <Iconify icon={'eva:more-vertical-fill'} width={20} height={20} />
+        <Iconify icon="eva:more-vertical-fill" width={20} height={20} />
       </IconButton>
 
       <MenuPopover

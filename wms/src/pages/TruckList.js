@@ -68,7 +68,7 @@ function applySortFilter(array, comparator, query) {
     return a[1] - b[1];
   });
   if (query) {
-    return filter(array, (request) => (request.requestId.toLowerCase().indexOf(query.toLowerCase()) !== -1));
+    return filter(array, (request) => request.requestId.toLowerCase().indexOf(query.toLowerCase()) !== -1);
     // (_user.firstName.toLowerCase().indexOf(query.toLowerCase()) || _user.lastName.toLowerCase().indexOf(query.toLowerCase())) !== -1
   }
   return stabilizedThis.map((el) => el[0]);
@@ -98,7 +98,7 @@ export default function TruckList() {
   // let filteredTrucksList = null;
   // let isTruckNotFound = null;
   // let usersList = null;
-  
+
   // function assign(temp) {
   //     filteredTrucksList = applySortFilter(usersList, getComparator(order, orderBy), filterName);
   //     isTruckNotFound = filteredTrucksList.length === 0;
@@ -107,9 +107,9 @@ export default function TruckList() {
   // }
 
   let truckListPromise;
-  
+
   useEffect(() => {
-    console.log("Hello!");
+    console.log('Hello!');
     truckListPromise = getTrucksList();
     console.log(truckListPromise);
     truckListPromise.then((res) => {
@@ -160,85 +160,100 @@ export default function TruckList() {
           {/* <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
             New Request
           </Button> */}
-          <Button variant="contained" component={RouterLink} to="/dashboard/schedule" startIcon={<Iconify icon="akar-icons:clock" />}>
+          <Button
+            variant="contained"
+            component={RouterLink}
+            to="/dashboard/schedule"
+            startIcon={<Iconify icon="akar-icons:clock" />}
+          >
             Begin Scheduling
           </Button>
         </Stack>
 
-          <Card>
-            <URTListToolbar placeHolder="Search Truck..." numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
+        <Card>
+          <URTListToolbar
+            placeHolder="Search Truck..."
+            numSelected={selected.length}
+            filterName={filterName}
+            onFilterName={handleFilterByName}
+          />
 
-            <Scrollbar>
-              <TableContainer sx={{ minWidth: 800 }}>
-                <Table>
-                  <URTListHead
-                    order={order}
-                    orderBy={orderBy}
-                    headLabel={TABLE_HEAD}
-                    rowCount={loading ? 0 : filteredTrucksList.length}
-                    numSelected={selected.length}
-                    onRequestSort={handleRequestSort}
-                  />
-                  <TableBody>
-                    {
-                      loading ? <Typography variant="h5" sx = {{ pl: '24px', pt: '16px'}} noWrap>Loading...</Typography> : 
-                        filteredTrucksList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                        // const name = row.firstName + " " + row.lastName;
-                        return (
-                          <TableRow
-                            hover
-                            key={row._id}
-                            tabIndex={-1}
-                            role="checkbox"
-                          >
-                            <TableCell component="th" scope="row" sx={{ pl: 3, minWidth: '150px' }}>
-                              <Stack direction="row" alignItems="center" spacing={2}>
-                                {/* <Avatar alt={name} src={avatarUrl} /> */}
-                                <Typography variant="subtitle2" sx = {{ fontWeight: 500 }} noWrap>
-                                  {`${row.truck_id}`}
-                                </Typography>
-                              </Stack>
-                            </TableCell>
-                            <TableCell sx={{ pl: 3 }} align="left">{row.garbage_type}</TableCell>
-                            <TableCell sx={{ pl: 3, minWidth: '150px' }} align="left">{row.truck_capacity}</TableCell>
-                            <TableCell sx={{ pl: 3, minWidth: '100px' }} align="left">{row.truck_status}</TableCell>
+          <Scrollbar>
+            <TableContainer sx={{ minWidth: 800 }}>
+              <Table>
+                <URTListHead
+                  order={order}
+                  orderBy={orderBy}
+                  headLabel={TABLE_HEAD}
+                  rowCount={loading ? 0 : filteredTrucksList.length}
+                  numSelected={selected.length}
+                  onRequestSort={handleRequestSort}
+                />
+                <TableBody>
+                  {loading ? (
+                    <Typography variant="h5" sx={{ pl: '24px', pt: '16px' }} noWrap>
+                      Loading...
+                    </Typography>
+                  ) : (
+                    filteredTrucksList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                      // const name = row.firstName + " " + row.lastName;
+                      return (
+                        <TableRow hover key={row._id} tabIndex={-1} role="checkbox">
+                          <TableCell component="th" scope="row" sx={{ pl: 3, minWidth: '150px' }}>
+                            <Stack direction="row" alignItems="center" spacing={2}>
+                              {/* <Avatar alt={name} src={avatarUrl} /> */}
+                              <Typography variant="subtitle2" sx={{ fontWeight: 500 }} noWrap>
+                                {`${row.truck_id}`}
+                              </Typography>
+                            </Stack>
+                          </TableCell>
+                          <TableCell sx={{ pl: 3 }} align="left">
+                            {row.garbage_type}
+                          </TableCell>
+                          <TableCell sx={{ pl: 3, minWidth: '150px' }} align="left">
+                            {row.truck_capacity}
+                          </TableCell>
+                          <TableCell sx={{ pl: 3, minWidth: '100px' }} align="left">
+                            {row.truck_status}
+                          </TableCell>
 
-                            <TableCell align="right">
-                              <UserMoreMenu />
-                            </TableCell>
-                          </TableRow>
-                        );
-                    })}
-                    {emptyRows > 0 && (
-                      <TableRow style={{ height: 53 * emptyRows }}>
-                        <TableCell colSpan={6} />
-                      </TableRow>
-                    )}
-                  </TableBody>
-
-                  {isTruckNotFound && (
-                    <TableBody>
-                      <TableRow>
-                        <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                          <SearchNotFound searchQuery={filterName} />
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
+                          <TableCell align="right">
+                            <UserMoreMenu />
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })
                   )}
-                </Table>
-              </TableContainer>
-            </Scrollbar>
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 53 * emptyRows }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
 
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25]}
-              component="div"
-              count={loading ? 0 : filteredTrucksList.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-          </Card>
+                {isTruckNotFound && (
+                  <TableBody>
+                    <TableRow>
+                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+                        <SearchNotFound searchQuery={filterName} />
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                )}
+              </Table>
+            </TableContainer>
+          </Scrollbar>
+
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={loading ? 0 : filteredTrucksList.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Card>
       </Container>
     </Page>
   );

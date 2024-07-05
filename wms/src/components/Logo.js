@@ -12,7 +12,9 @@ Logo.propTypes = {
 };
 
 export default function Logo({ disabledLink = false, sx }) {
-  const logo = <Box component="img" src="/static/website_logo.svg" sx={{ backgroundSize:'cover', height: 48, ...sx }} />
+  const logo = (
+    <Box component="img" src="/static/website_logo.svg" sx={{ backgroundSize: 'cover', height: 48, ...sx }} />
+  );
   if (disabledLink) {
     return <>{logo}</>;
   }

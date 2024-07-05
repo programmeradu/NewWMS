@@ -68,7 +68,7 @@ export default function Register() {
           <Logo />
           {smUp && (
             <Typography variant="body2" sx={{ mt: { md: -2 } }}>
-              Already have an account? {''}
+              Already have an account?
               <Link variant="subtitle2" component={RouterLink} to="/login">
                 Login
               </Link>
@@ -102,7 +102,7 @@ export default function Register() {
               <Link underline="always" color="text.primary" href="#">
                 Terms of Service
               </Link>
-              {''}and{''}
+              and
               <Link underline="always" color="text.primary" href="#">
                 Privacy Policy
               </Link>
