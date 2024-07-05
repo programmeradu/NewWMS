@@ -219,7 +219,7 @@ export default function Register() {
 								fullWidth
 								id="firstName"
 								label="First Name"
-								autoFocus
+								
 								{...(errors["firstName"] && {
 									error: true,
 									helperText: errors["firstName"],
