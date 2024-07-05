@@ -64,7 +64,7 @@ const Map = () => {
                             })).sort((a, b) => a.dist - b.dist)
                         }
                         onSelect={(place) => console.log(place)}
-                        autoFocus={true}
+                        
                         onSearch={(query, results) => {
                             onSearchChange(query)
                         }}

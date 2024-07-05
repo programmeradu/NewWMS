@@ -71,7 +71,7 @@ const LocationSearchBox = ({ address, setAddress }) => {
                             console.log(place.adr.freeformAddress);
                             console.log(place);
                         }}
-                        autoFocus={true}
+                        
                         onSearch={(query, results) => {
                             onSearchChange(query)
                         }}
