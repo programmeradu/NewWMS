@@ -55,7 +55,6 @@ export default function Searchbar() {
         <Slide direction="down" in={isOpen} mountOnEnter unmountOnExit>
           <SearchbarStyle>
             <Input
-              
               fullWidth
               disableUnderline
               placeholder="Search…"
