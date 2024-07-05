@@ -1,11 +1,7 @@
 import DefaultLayout from "./Layouts/DefaultLayout";
 
-
-
 function App() {
-  return (
-    <DefaultLayout></DefaultLayout>
-  );
+  return <DefaultLayout />;
 }
 
 export default App;

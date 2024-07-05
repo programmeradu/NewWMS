@@ -31,7 +31,7 @@ export default function AppNewsUpdate({ title, subheader, list, ...other }) {
       <Divider />
 
       <Box sx={{ p: 2, textAlign: 'right' }}>
-        <Button size="small" color="inherit" endIcon={<Iconify icon={'eva:arrow-ios-forward-fill'} />}>
+        <Button size="small" color="inherit" endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}>
           View all
         </Button>
       </Box>

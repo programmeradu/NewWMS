@@ -69,7 +69,12 @@ function applySortFilter(array, comparator, query) {
     return a[1] - b[1];
   });
   if (query) {
-    return filter(array, (_user) => (_user.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1) || (_user.lastName.toLowerCase().indexOf(query.toLowerCase()) !== -1));
+    return filter(
+      array,
+      (_user) =>
+        _user.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+        _user.lastName.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
     // (_user.firstName.toLowerCase().indexOf(query.toLowerCase()) || _user.lastName.toLowerCase().indexOf(query.toLowerCase())) !== -1
   }
   return stabilizedThis.map((el) => el[0]);
@@ -99,7 +104,7 @@ export default function UserList() {
   // let filteredUsers = null;
   // let isUserNotFound = null;
   // let usersList = null;
-  
+
   // function assign(temp) {
   //     filteredUsers = applySortFilter(usersList, getComparator(order, orderBy), filterName);
   //     isUserNotFound = filteredUsers.length === 0;
@@ -108,9 +113,9 @@ export default function UserList() {
   // }
 
   let usersListPromise;
-  
+
   useEffect(() => {
-    console.log("Hello!");
+    console.log('Hello!');
     usersListPromise = getUsersList();
     console.log(usersListPromise);
     usersListPromise.then((res) => {
@@ -187,79 +192,87 @@ export default function UserList() {
           </Button>
         </Stack>
 
-          <Card>
-            <URTListToolbar placeHolder="Search User..." numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
+        <Card>
+          <URTListToolbar
+            placeHolder="Search User..."
+            numSelected={selected.length}
+            filterName={filterName}
+            onFilterName={handleFilterByName}
+          />
 
-            <Scrollbar>
-              <TableContainer sx={{ minWidth: 800 }}>
-                <Table>
-                  <URTListHead
-                    order={order}
-                    orderBy={orderBy}
-                    headLabel={TABLE_HEAD}
-                    rowCount={loading ? 0 : filteredUsers.length}
-                    numSelected={selected.length}
-                    onRequestSort={handleRequestSort}
-                  />
-                  <TableBody>
-                    {
-                      loading ? <Typography variant="h5" sx = {{ pl: '24px', pt: '16px'}} noWrap>Loading...</Typography> : 
-                        filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                        // const name = row.firstName + " " + row.lastName;
-                        return (
-                          <TableRow
-                            hover
-                            key={row._id}
-                            tabIndex={-1}
-                            role="checkbox"
-                          >
-                            <TableCell component="th" scope="row" sx={{ pl: 3 }}>
-                              <Stack direction="row" alignItems="center" spacing={2}>
-                                {/* <Avatar alt={name} src={avatarUrl} /> */}
-                                <Typography variant="subtitle2" noWrap>
-                                  {`${row.firstName} ${row.lastName}`}
-                                </Typography>
-                              </Stack>
-                            </TableCell>
-                            <TableCell sx={{ pl: 3 }} align="left">{row.address ? row.address : 'Not Yet Available'}</TableCell>
-                            <TableCell sx={{ pl: 3 }} align="left">{row.email}</TableCell>
+          <Scrollbar>
+            <TableContainer sx={{ minWidth: 800 }}>
+              <Table>
+                <URTListHead
+                  order={order}
+                  orderBy={orderBy}
+                  headLabel={TABLE_HEAD}
+                  rowCount={loading ? 0 : filteredUsers.length}
+                  numSelected={selected.length}
+                  onRequestSort={handleRequestSort}
+                />
+                <TableBody>
+                  {loading ? (
+                    <Typography variant="h5" sx={{ pl: '24px', pt: '16px' }} noWrap>
+                      Loading...
+                    </Typography>
+                  ) : (
+                    filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                      // const name = row.firstName + " " + row.lastName;
+                      return (
+                        <TableRow hover key={row._id} tabIndex={-1} role="checkbox">
+                          <TableCell component="th" scope="row" sx={{ pl: 3 }}>
+                            <Stack direction="row" alignItems="center" spacing={2}>
+                              {/* <Avatar alt={name} src={avatarUrl} /> */}
+                              <Typography variant="subtitle2" noWrap>
+                                {`${row.firstName} ${row.lastName}`}
+                              </Typography>
+                            </Stack>
+                          </TableCell>
+                          <TableCell sx={{ pl: 3 }} align="left">
+                            {row.address ? row.address : 'Not Yet Available'}
+                          </TableCell>
+                          <TableCell sx={{ pl: 3 }} align="left">
+                            {row.email}
+                          </TableCell>
 
-                            <TableCell align="right">
-                              <UserMoreMenu />
-                            </TableCell>
-                          </TableRow>
-                        );
-                    })}
-                    {emptyRows > 0 && (
-                      <TableRow style={{ height: 53 * emptyRows }}>
-                        <TableCell colSpan={6} />
-                      </TableRow>
-                    )}
-                  </TableBody>
-
-                  {isUserNotFound && (
-                    <TableBody>
-                      <TableRow>
-                        <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                          <SearchNotFound searchQuery={filterName} />
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
+                          <TableCell align="right">
+                            <UserMoreMenu />
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })
                   )}
-                </Table>
-              </TableContainer>
-            </Scrollbar>
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 53 * emptyRows }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
 
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25]}
-              component="div"
-              count={loading ? 0 : filteredUsers.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-          </Card>
+                {isUserNotFound && (
+                  <TableBody>
+                    <TableRow>
+                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+                        <SearchNotFound searchQuery={filterName} />
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                )}
+              </Table>
+            </TableContainer>
+          </Scrollbar>
+
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={loading ? 0 : filteredUsers.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Card>
       </Container>
     </Page>
   );
