@@ -1,7 +1,7 @@
 <h1 align="center" id="title">StaGreen: AI-Powered Urban Sustainability</h1>
 
 <p align="center">
-  <img src="https://socialify.git.ci/programmeradu/NewWMS/image?forks=1&amp;issues=1&amp;language=1&amp;name=1&amp;owner=1&amp;pulls=1&amp;theme=Light" alt="project-image">
+  <img src="https://socialify.git.ci/programmeradu/StaGreen/image?font=Jost&language=1&name=1&owner=1&stargazers=1&theme=Auto" alt="project-image">
 </p>
 
 ## **Introduction**
